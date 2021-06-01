@@ -1,5 +1,6 @@
 package com.plete.otokko
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils.replace
@@ -8,6 +9,7 @@ import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.plete.otokko.activity.LoginActivity
 import com.plete.otokko.fragment.AkunFragment
 import com.plete.otokko.fragment.HomeFragment
 import com.plete.otokko.fragment.KeranjangFragment
@@ -40,7 +42,7 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId){
                 R.id.navigation_home -> setCurrentFragment(home)
                 R.id.navigation_keranjang -> setCurrentFragment(keranjang)
-                R.id.navigation_akun -> setCurrentFragment(akun)
+                R.id.navigation_akun -> startActivity(Intent(this, LoginActivity::class.java))
             }
             true
         }
