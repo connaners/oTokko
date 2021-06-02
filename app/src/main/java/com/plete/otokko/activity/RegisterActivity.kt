@@ -4,19 +4,15 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
-import com.plete.otokko.MainActivity
 import com.plete.otokko.R
 import com.plete.otokko.api.ApiClient
-import com.plete.otokko.api.apiInterface
+import com.plete.otokko.api.ApiInterface
 import com.plete.otokko.model.DefaultResponse
 import kotlinx.android.synthetic.main.activity_register.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.create
 
 class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,7 +43,7 @@ class RegisterActivity : AppCompatActivity() {
             ).show()
         }
 
-        var apiService: apiInterface = ApiClient().getApiClient()!!.create(apiInterface::class.java)
+        var apiService: ApiInterface = ApiClient().getApiClient()!!.create(ApiInterface::class.java)
         var requestCall: Call<DefaultResponse> = apiService.register(name, email, pass, repass)
 
         requestCall.enqueue(

@@ -5,7 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.viewpager.widget.ViewPager
 import com.plete.otokko.R
+import com.plete.otokko.adapter.AdapterSlider
+import kotlinx.android.synthetic.main.fragment_home.view.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,12 +33,27 @@ class HomeFragment : Fragment() {
         }
     }
 
+    lateinit var vpSlider: ViewPager
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
+
+        vpSlider = view.vpSlider
+
+        var arrSlider = ArrayList<Int>()
+        arrSlider.add(R.drawable.landscape)
+        arrSlider.add(R.drawable.landscape)
+        arrSlider.add(R.drawable.landscape)
+
+        val adapterSlider = AdapterSlider(arrSlider, activity)
+        vpSlider.adapter = adapterSlider
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        return view
     }
 
     companion object {

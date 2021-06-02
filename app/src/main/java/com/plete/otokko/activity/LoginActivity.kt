@@ -8,13 +8,12 @@ import android.widget.Toast
 import com.plete.otokko.MainActivity
 import com.plete.otokko.R
 import com.plete.otokko.api.ApiClient
-import com.plete.otokko.api.apiInterface
+import com.plete.otokko.api.ApiInterface
 import com.plete.otokko.model.LoginResponse
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.create
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
             "Field cannnot be Empty!", Toast.LENGTH_LONG).show()
         }
 
-        var apiService: apiInterface = ApiClient().getApiClient()!!.create(apiInterface::class.java)
+        var apiService: ApiInterface = ApiClient().getApiClient()!!.create(ApiInterface::class.java)
         var requestCall: Call<LoginResponse> = apiService.login(email, pass)
 
         requestCall.enqueue(

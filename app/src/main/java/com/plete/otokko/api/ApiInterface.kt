@@ -6,7 +6,7 @@ import com.plete.otokko.model.LoginResponse
 import retrofit2.Call
 import retrofit2.http.*
 
-interface apiInterface {
+interface ApiInterface {
     @FormUrlEncoded
     @POST("register")
     fun register(
